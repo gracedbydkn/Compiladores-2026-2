@@ -1,15 +1,24 @@
 import { pessoas, emojis } from "./dados.js"
+let contHashtag = 0;
+let contMencao = 0;
 
 function teste() {
     console.log("Hello World!")
 }
 
 function traduzir() {
+    contMencao = 0;
+    contHashtag = 0;
     const erros = [];
-    let texto = escaparHTML(document.getElementById("entrada").value);
+    const contagem = [];
+
+    let texto = escaparHtml(document.getElementById("entrada").value);
 
     texto = subMencoes(texto, erros);
     texto = subHashtags(texto, erros);
+
+    contagem.push("Quantidade de menções: " + contMencao);
+    contagem.push("Quantidade de hashtags: " + contHashtag);
 
     const hashtags = texto.match(/#[\wÀ-ÿ:]+/g) || [];
     const mencoes = texto.match(/@[\wÀ-ÿ]+/g) || [];
@@ -17,7 +26,9 @@ function traduzir() {
     document.getElementById("saida").innerHTML = texto;
 
     const lista = document.getElementById("erros");
+    const listaContagem = document.getElementById("contagem")
     lista.innerHTML = "";
+    listaContagem.innerHTML = "";
 
     if (erros.length === 0) {
         lista.innerHTML = "<li>Nenhum erro encontrado.</li>";
@@ -30,9 +41,17 @@ function traduzir() {
         lista.appendChild(item);
     }
     
+    for (const mensagem of contagem) {
+        const item = document.createElement("li");
+        item.className = "contagem";
+        item.textContent = mensagem;
+        listaContagem.appendChild(item)
+    }
+    
     console.log("Menções:", mencoes);
     console.log("Hashtags", hashtags);
     console.log("Erros: ", erros)
+    console.log("Contagem: ", contagem)
 }
 
 function marcarErro(trecho) {
@@ -40,7 +59,7 @@ function marcarErro(trecho) {
 }
 
 function subMencoes(texto, erros) {
-    const padrao = /@([\wÀ-ÿ]+)/g;
+    const padrao = /(?<![\wÀ-ÿ])@([\wÀ-ÿ]+(?:\.[\wÀ-ÿ]+)*)/g;
 
     return texto.replace(padrao, function (trecho, usuario) {
         const chave = usuario.toLowerCase();
@@ -49,6 +68,7 @@ function subMencoes(texto, erros) {
             erros.push("Menção desconhecida: " + trecho);
             return marcarErro(trecho);
         }
+        contMencao++;
         return pessoas[chave];
     });
 }
@@ -70,7 +90,7 @@ function subHashtags(texto, erros) {
             erros.push("Hashtag desconhecida: " + trecho);
             return marcarErro(trecho);
         }
-
+        contHashtag++;
         return emojis[chave];
     }); 
 }
