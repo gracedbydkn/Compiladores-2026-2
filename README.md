@@ -1,7 +1,7 @@
 Guia de diretórios:
 
-Compiladores_Amorim
-├───A3_Linguagem - Projeto de A3 (Fase 1 em andamento)
+Compiladores_Amorim  
+├───A3_Linguagem - Projeto de A3 (Fase 1 em andamento)  
 └───exercicios - Atividades em aula
 
 Alunos:
