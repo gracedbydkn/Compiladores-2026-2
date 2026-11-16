@@ -17,17 +17,6 @@ export function analisarSintatico(tokens) {
         return token;
     }
 
-    function comecaComando() {
-        const token = tokens[i];
-        if (token === undefined) {                           // sem token, não começa comando
-            return false;
-        }
-        if (token.tipo === "TELA" || token.tipo === "FORMATO") {
-            return true;
-        }
-        return false;
-    }
-
     function lista() {
         const comandos = [];
         while (i < tokens.length) {
