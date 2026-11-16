@@ -2,7 +2,8 @@ Guia de diretórios:
 
 Compiladores_Amorim  
 ├───A3_Linguagem - Projeto de A3 (Fase 1 em andamento)  
-└───exercicios - Atividades em aula
+├───exercicios - Atividades em aula
+└───DOCUMENTAÇÃO_15112026 - Documentação da fase 1 da linguagem
 
 Exemplo de código para utilizar:
 ```
