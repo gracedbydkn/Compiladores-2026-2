@@ -5,7 +5,8 @@ Compiladores_Amorim
 └───exercicios - Atividades em aula
 
 Exemplo de código para utilizar:
-´tela branco [
+```
+tela branco [
    altura 400
    largura 400
 ]
@@ -18,8 +19,8 @@ retangulo [
    espessura 4
    preenchimento azul
    borda preto
-]´
-
+]
+```
 
 Alunos:
 
