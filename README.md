@@ -4,6 +4,23 @@ Compiladores_Amorim
 ├───A3_Linguagem - Projeto de A3 (Fase 1 em andamento)  
 └───exercicios - Atividades em aula
 
+Exemplo de código para utilizar:
+´tela branco [
+   altura 400
+   largura 400
+]
+
+retangulo [
+   posicaox 10
+   posicaoy 10
+   altura 50
+   largura 100
+   espessura 4
+   preenchimento azul
+   borda preto
+]´
+
+
 Alunos:
 
 Alan Rocha Binato - 824150209  
